@@ -1,113 +1,135 @@
-# Lijie Skill / 理解 Skill
+# Understanding
 
-Lijie is a Codex skill for turning unfamiliar material into learnable structure.
-It helps an AI assistant explain concepts from first principles, run a Feynman-style teach-back, and map relationships between ideas instead of only producing a short summary.
+Understanding is a public Codex skill repository for `lijie`, a learning-oriented skill that helps an AI assistant turn unfamiliar material into clear, testable knowledge structure.
 
-`lijie` 是一个用于“真正理解”的 Codex skill。它会把陌生概念、文章、课程、论文、工作流或知识体系拆成可学习的结构：先用第一性原理找到底层零件，再用费曼解释讲清楚，最后把概念之间的顺序、层级、依赖、网络和反馈闭环标出来。
+`Understanding` 是 `lijie` 这个 Codex skill 的公开仓库。它的目标不是简单压缩文本，而是帮助 AI 助手把陌生知识拆成「讲得清、拆得开、用得上、能验证」的结构。
 
-## What It Does / 它的作用
+## What This Skill Does / 这个 Skill 的作用
 
-- Explains a topic in plain language first, then with precise terminology.
-- Separates primitives, assumptions, mechanisms, constraints, consequences, and examples.
-- Maps knowledge relations such as sequence, hierarchy, dependency, one-to-many, many-to-one, and feedback loops.
-- Turns summaries into reusable learning artifacts: concept maps, study notes, mastery checks, teach-back prompts, and learning paths.
-- Marks uncertain or inferred claims instead of hiding them inside fluent prose.
+`lijie` guides Codex to process learning material through three lenses:
 
-- 先讲人话，再讲精确版本。
-- 区分事实、假设、底层概念、机制、限制条件、结果和例子。
-- 显式标注知识关系：1-2-3 顺序、1/2/3 并列、层级、依赖、一对多、多对一、网络、闭环和开环。
-- 把“看起来懂了”的摘要，变成能复习、能迁移、能自测的学习材料。
-- 对推断、不确定、高风险或需要验证的内容做标记，不把它们伪装成确定结论。
+- Feynman explanation: explain simply first, then precisely.
+- First principles: separate primitives, assumptions, mechanisms, constraints, examples, and consequences.
+- Knowledge structure mapping: label sequences, parallel sets, hierarchies, dependencies, networks, many-to-one relations, one-to-many relations, closed loops, and open loops.
 
-## When To Use / 什么时候使用
+`lijie` 会引导 Codex 从三个角度处理学习材料：
 
-Use `lijie` when you want to understand, teach, summarize, or internalize:
+- 费曼解释：先用简单语言讲清楚，再给出精确版本。
+- 第一性原理：区分底层概念、事实、假设、机制、限制、例子和结果。
+- 知识结构映射：标出顺序、并列、层级、依赖、网络、多对一、一对多、闭环和开环。
 
-- a concept, book, paper, article, video, course, or documentation page
-- a technical system, product workflow, business model, mental model, or research domain
-- a dense note that needs structure rather than compression
-- relationships between ideas, especially dependencies, loops, tradeoffs, and hidden prerequisites
+## When To Use It / 什么时候用
 
-当你想学习、解释、总结或内化以下内容时，可以使用 `lijie`：
+Use it when you want to understand, teach, summarize, or internalize:
 
-- 概念、书籍、论文、文章、视频、课程或文档
-- 技术系统、产品流程、商业模型、思维模型或研究领域
+- a concept, paper, article, book, course, video, or documentation page
+- a technical system, workflow, business model, mental model, or research domain
+- dense notes that need structure rather than compression
+- hidden relationships between ideas, especially dependencies, feedback loops, tradeoffs, and prerequisites
+
+当你想学习、解释、总结或内化这些内容时，可以使用它：
+
+- 概念、论文、文章、书籍、课程、视频或文档
+- 技术系统、工作流、商业模型、思维模型或研究领域
 - 信息很密但结构不清的笔记
-- 概念之间的关系，尤其是依赖、闭环、开环、权衡和隐藏前置知识
+- 概念之间的隐藏关系，尤其是依赖、反馈闭环、权衡和前置知识
 
-## Example Prompts / 示例提示词
+## Quick Start / 快速开始
+
+Clone this repository:
+
+```powershell
+git clone https://github.com/aDragon0707/understanding.git
+cd understanding
+```
+
+Install the skill into your local Codex skills directory:
+
+```powershell
+Copy-Item -Recurse -Force .\skill\lijie C:\Users\<you>\.codex\skills\
+```
+
+Then invoke it in Codex:
 
 ```text
-Use $lijie to explain reinforcement learning from first principles.
+Use $lijie to explain reinforcement learning from first principles, then map its knowledge structure.
 ```
+
+克隆仓库：
+
+```powershell
+git clone https://github.com/aDragon0707/understanding.git
+cd understanding
+```
+
+安装到本地 Codex skills 目录：
+
+```powershell
+Copy-Item -Recurse -Force .\skill\lijie C:\Users\<you>\.codex\skills\
+```
+
+然后在 Codex 中调用：
+
+```text
+用 $lijie 解释这篇论文：先给我费曼解释，再拆第一性原理，最后列出掌握检查题。
+```
+
+## Example Prompts / 示例提示词
 
 ```text
 Use $lijie to summarize this article, then map the knowledge structure and open loops.
 ```
 
 ```text
-用 $lijie 解释这篇论文：先给我费曼解释，再拆第一性原理，最后列出掌握检查题。
+Use $lijie to turn these notes into a study plan with mastery checks.
 ```
 
 ```text
 用 $lijie 把这个商业模式拆成：底层假设、关键机制、依赖关系、反馈闭环和失败模式。
 ```
 
-## Output Shape / 输出形态
-
-The skill adapts to the request, but commonly produces:
-
-- Core question
-- Feynman explanation
-- First-principles decomposition
-- Knowledge structure map
-- Examples, failure modes, and edge cases
-- Mastery checks or teach-back prompts
-
-它会根据任务自动调整输出，但常见结构包括：
-
-- 核心问题
-- 费曼解释
-- 第一性原理拆解
-- 知识结构图
-- 例子、失败模式和边界情况
-- 掌握检查题或复述提示
+```text
+用 $lijie 学习这个新概念：先讲人话，再讲专业版，最后给我自测题。
+```
 
 ## Repository Structure / 仓库结构
 
 ```text
 .
-|-- SKILL.md
-|-- agents/
-|   `-- openai.yaml
-|-- references/
-|   `-- structure-framework.md
+|-- README.md
+|-- CHANGELOG.md
+|-- LICENSE
 |-- docs/
 |   |-- INTRO.en.md
 |   `-- INTRO.zh-CN.md
-|-- .gitignore
-`-- README.md
+`-- skill/
+    `-- lijie/
+        |-- SKILL.md
+        |-- agents/
+        |   `-- openai.yaml
+        `-- references/
+            `-- structure-framework.md
 ```
 
-## Installation / 安装
+## Skill Package / Skill 包内容
 
-Clone this repository, enter the repo root, then copy its contents into your Codex skills directory:
+The installable skill lives in `skill/lijie/`.
 
-```powershell
-New-Item -ItemType Directory -Force C:\Users\<you>\.codex\skills\lijie
-Copy-Item -Recurse .\* C:\Users\<you>\.codex\skills\lijie
-```
+- `skill/lijie/SKILL.md`: the main skill instructions and trigger metadata
+- `skill/lijie/agents/openai.yaml`: UI-facing metadata for Codex
+- `skill/lijie/references/structure-framework.md`: a reference for mapping knowledge relationships and feedback loops
 
-Or keep the repository elsewhere and sync the repository contents into your skills directory.
+真正可安装的 skill 位于 `skill/lijie/`。
 
-克隆这个仓库，进入仓库根目录，然后把内容复制到 Codex skills 目录：
+- `skill/lijie/SKILL.md`：主说明和触发元数据
+- `skill/lijie/agents/openai.yaml`：Codex 界面使用的展示元数据
+- `skill/lijie/references/structure-framework.md`：知识关系和反馈闭环的结构映射参考
 
-```powershell
-New-Item -ItemType Directory -Force C:\Users\<you>\.codex\skills\lijie
-Copy-Item -Recurse .\* C:\Users\<you>\.codex\skills\lijie
-```
+## More Docs / 更多文档
 
-也可以把 repo 放在别处，只把仓库内容同步到你的 skills 目录。
+- [English introduction](docs/INTRO.en.md)
+- [中文介绍](docs/INTRO.zh-CN.md)
+- [Changelog](CHANGELOG.md)
 
 ## Design Philosophy / 设计理念
 
@@ -122,7 +144,7 @@ Good learning is not just shorter text. It is structure, mechanism, feedback, an
 - How do the pieces generate the result?
 - What depends on what?
 - Where is the feedback loop?
-- How do we know the learner can use it?
+- How can the learner prove they can use it?
 
 所以 `lijie` 会推动助手回答：
 
@@ -135,6 +157,4 @@ Good learning is not just shorter text. It is structure, mechanism, feedback, an
 
 ## License / 许可证
 
-Add a license that matches your publishing preference before public release.
-
-公开发布前，请根据你的发布意图补充合适的许可证。
+MIT License. See [LICENSE](LICENSE).
