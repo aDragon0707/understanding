@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lijie"
+  short_description: "Learn, explain, and map knowledge from first principles."
+  default_prompt: "Use $lijie to explain this topic from first principles, then map its knowledge structure and feedback loops."
