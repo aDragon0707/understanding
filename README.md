@@ -108,6 +108,7 @@ Use $lijie to turn these notes into a study plan with mastery checks.
         |-- agents/
         |   `-- openai.yaml
         `-- references/
+            |-- formula-origin-protocol.md
             `-- structure-framework.md
 ```
 
@@ -117,12 +118,14 @@ The installable skill lives in `skill/lijie/`.
 
 - `skill/lijie/SKILL.md`: the main skill instructions and trigger metadata
 - `skill/lijie/agents/openai.yaml`: UI-facing metadata for Codex
+- `skill/lijie/references/formula-origin-protocol.md`: a protocol for explaining why formulas and transformations have their structure before using notation
 - `skill/lijie/references/structure-framework.md`: a reference for mapping knowledge relationships and feedback loops
 
 真正可安装的 skill 位于 `skill/lijie/`。
 
 - `skill/lijie/SKILL.md`：主说明和触发元数据
 - `skill/lijie/agents/openai.yaml`：Codex 界面使用的展示元数据
+- `skill/lijie/references/formula-origin-protocol.md`：用于先解释公式和变换结构来源、再使用符号的协议
 - `skill/lijie/references/structure-framework.md`：知识关系和反馈闭环的结构映射参考
 
 ## More Docs / 更多文档

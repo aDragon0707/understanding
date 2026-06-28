@@ -34,6 +34,7 @@ If the user gives no target level, default to an intelligent beginner who wants 
    - Then give the precise version.
    - Surface gaps, hidden leaps, jargon, and non-obvious dependencies.
    - Use analogies only when they preserve the core mechanism; state where each analogy breaks.
+   - Load `references/formula-origin-protocol.md` when the learner asks why a formula, transformation, or notation has its structure, or when they push back that the answer explains symbols instead of the source.
 
 4. Map the knowledge structure.
    - Load `references/structure-framework.md` when the user asks for structural mapping, system frameworks, loops, "1-2-3", "one-to-many", "many-to-one", or when the material has more than a few concepts.
