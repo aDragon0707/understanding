@@ -1,200 +1,116 @@
-# Knowledge Structure Framework
+# 知识结构框架
 
-Use this reference when a task needs explicit knowledge topology: how points connect, generate, constrain, or complete one another.
+本文件是结构判断工具，不是必须打印的模板。只使用能澄清当前学习目标的最小关系集合，省略不存在的关系。
 
-## Relation Types
+## 关系类型
 
-### 1-2-3 Sequence
+### Sequence：顺序、过程或推导
 
-Use for ordered dependency, process, causality, derivation, or learning progression.
-
-Pattern:
+用于前一步的状态必须经过转换才能得到后一步的情况：
 
 ```text
-1 prerequisite/input -> 2 mechanism/operation -> 3 output/result -> 4 next state
+输入/前置条件 → 操作/机制 → 输出/结果 → 下一状态
 ```
 
-Check:
-- Can step 3 happen before step 2? If yes, it may not be a true sequence.
-- Does each step transform the previous state?
-- Is the transition rule explicit?
+检查：每一步是否改变了状态？后一步是否真的依赖前一步？如果顺序可以随意交换，不要误称为 sequence。
 
-### 1/2/3 Parallel Set
-
-Use for peer concepts under one category. Order does not matter.
-
-Pattern:
+### Parallel Set：同一父问题下的并列维度
 
 ```text
-Parent category
-|-- 1 peer dimension
-|-- 2 peer dimension
-`-- 3 peer dimension
+父问题
+├─ 维度 A
+├─ 维度 B
+└─ 维度 C
 ```
 
-Check:
-- Do all items answer the same parent question?
-- Are they mutually exclusive, overlapping, or complementary?
-- Is there a missing fourth peer?
+检查：各项是否回答同一个上层问题？它们是互斥、重叠还是互补？
 
-### One-to-Many
-
-Use when one principle, cause, component, or decision branches into many effects, cases, subparts, examples, or tactics.
-
-Pattern:
+### One-to-Many：一个原则产生多个分支
 
 ```text
-1 source/principle
-|-- A consequence/subpart
-|-- B consequence/subpart
-`-- C consequence/subpart
+原则/原因
+├─ 子部分或后果 A
+├─ 子部分或后果 B
+└─ 子部分或后果 C
 ```
 
-Check:
-- What rule generates the branches?
-- Are branches examples, components, effects, or options?
-- Do branches feed back to the source?
+说明分支是组成部分、后果、案例还是可选策略。
 
-### Many-to-One
-
-Use when multiple facts, causes, constraints, observations, or mechanisms converge into one conclusion, capability, or outcome.
-
-Pattern:
+### Many-to-One：多个条件汇聚到一个结论
 
 ```text
-A evidence/cause
-B evidence/cause
-C evidence/cause
-        -> 1 conclusion/outcome
+证据 A ─┐
+证据 B ─┼→ 结论/能力
+证据 C ─┘
 ```
 
-Check:
-- Are all inputs necessary, sufficient, or merely supportive?
-- Which input is the bottleneck?
-- Does the conclusion disappear if one input is removed?
+说明各输入是必要、充分还是仅仅提供支持，并指出瓶颈。
 
-### Many-to-Many Network
-
-Use when concepts affect each other through cross-dependencies instead of a clean tree.
-
-Pattern:
+### Dependency：依赖关系
 
 ```text
-A <-> B
-A -> C
-B -> D
-C <-> D
+前置知识/约束/证据 → 可理解、可执行或可验证的对象
 ```
 
-Check:
-- Which nodes are hubs?
-- Which edges are causal, logical, temporal, or analogical?
-- Where can the network be simplified into smaller loops?
+区分概念依赖、实践依赖、证据依赖和工具依赖。
 
-### Hierarchy
-
-Use when concepts are nested by level of abstraction.
-
-Pattern:
+### Hierarchy：抽象层级
 
 ```text
-Level 0: domain
-Level 1: major systems
-Level 2: modules
-Level 3: mechanisms
-Level 4: examples/actions
+领域 → 系统 → 模块 → 机制 → 例子/操作
 ```
 
-Check:
-- Do lower levels instantiate or implement higher levels?
-- Are any examples incorrectly placed as principles?
-- Are any principles buried as examples?
+检查低层对象是否真正实例化或实现了高层原则，避免把原则埋在例子中。
 
-### Dependency
-
-Use when one concept cannot be understood, executed, or validated without another.
-
-Pattern:
+### Network：交叉依赖
 
 ```text
-Prerequisite -> dependent concept
-Input -> operation
-Constraint -> possible action
-Evidence -> belief update
+A ↔ B
+A → C
+B → D
+C ↔ D
 ```
 
-Check:
-- Is the dependency conceptual, practical, empirical, social, or technical?
-- Is it hard-required or just helpful?
+先找 hub 节点，再把复杂网络拆成几个局部依赖或反馈环。
 
-### Contradiction or Tension
-
-Use when two claims pull against each other.
-
-Pattern:
+### Contradiction or Tension：矛盾、权衡或适用条件冲突
 
 ```text
-Claim A improves X but harms Y.
-Claim B protects Y but limits X.
-Tradeoff: choose based on context Z.
+方案 A 改善 X，但损害 Y
+方案 B 保护 Y，但限制 X
+选择条件：Z
 ```
 
-Check:
-- Is it a real contradiction, a tradeoff, or a difference in level?
-- What condition resolves it?
+先判断是真矛盾、权衡，还是不同抽象层级上的陈述。
 
-## Loop Types
+## 反馈环
 
-### Closed Loop
+### Closed Loop：闭环
 
-A closed loop has input, action, output, feedback, comparison, and adjustment.
-
-Pattern:
+只有当结果会改变后续行动、状态、比较标准或目标时，才称为反馈环：
 
 ```text
-Goal/standard
-  -> Input/signal
-  -> Action/mechanism
-  -> Output/result
-  -> Feedback/measurement
-  -> Adjustment
-  -> back to action or goal
+目标/标准
+  ↓
+输入 → 行动 → 结果 → 测量 → 比较 → 调整
+  ↑                              ↺
 ```
 
-Use closed-loop analysis to show how a system learns, self-corrects, compounds, stabilizes, or spirals.
+明确测量什么、与什么比较、调整了什么，以及环的速度和方向。
 
-Check:
-- What is measured?
-- Who or what compares measurement to the goal?
-- What changes after feedback?
-- What is the loop speed?
-- Is the loop reinforcing or balancing?
-
-### Open Loop
-
-An open loop lacks feedback, measurement, comparison, or adjustment.
-
-Pattern:
+### Open Loop：开环
 
 ```text
-Input -> action -> output
+输入 → 行动 → 结果
 ```
 
-Open-loop risks:
-- The system repeats errors.
-- The learner feels familiar with material without testing recall.
-- A strategy runs without knowing whether it works.
-- A concept remains descriptive but not operational.
+开环风险是错误会被重复，学习者会把熟悉感误当成掌握。若目标需要自我修正，可增加测量、比较、调整和重测。
 
-Convert open to closed:
+不要为了填满模板而虚构反馈环。循环发生不等于存在反馈。
 
-```text
-Add measurement -> compare with goal -> adjust method -> retest
-```
+## 构图决策
 
-## Framework Builder
-
-For each important point, fill this mini-schema:
+遇到一个中心点时，内部可以检查：
 
 ```text
 Point:
@@ -211,13 +127,4 @@ Missing piece:
 Mastery test:
 ```
 
-## Common Transformations
-
-- Summary -> structure: turn "main ideas" into typed relations.
-- Jargon -> primitive: define what must be true before the term makes sense.
-- Example -> mechanism: extract what the example proves or demonstrates.
-- List -> hierarchy: group peers under parents and remove duplicates.
-- Process -> closed loop: add feedback and adjustment.
-- Opinion -> claim stack: identify evidence, assumption, inference, and implication.
-- Theory -> use: map principles to decisions, actions, and failure modes.
-
+不要逐项输出这个内部表，除非用户要求完整审计。
