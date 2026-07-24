@@ -6,6 +6,8 @@
 
 当前公开版本为 **R2**。
 
+[![CI](https://github.com/aDragon0707/understanding/actions/workflows/ci.yml/badge.svg)](https://github.com/aDragon0707/understanding/actions/workflows/ci.yml)
+
 ## 它解决什么问题
 
 很多学习材料的问题不是信息太少，而是结构没有被显式化：
@@ -156,6 +158,8 @@ R2 的公开验证记录位于 [`docs/evaluation/`](docs/evaluation/)：
 - micrograd 语义测试：`3/3` 通过。
 
 这些结果说明 R2 在本轮测试任务上表现更好，但不代表对所有学科、所有学习者或长期记忆都已经完成充分评估。后续修改应继续经过回归测试，而不是只依据一次对话的主观流畅度。
+
+仓库 CI 位于 [`.github/workflows/ci.yml`](.github/workflows/ci.yml)，会在 pull request 和 `main` 分支 push 时检查 skill frontmatter、YAML、README 本地链接、reference 路径和文档 UTF-8 编码。
 
 ## 文档导航
 
