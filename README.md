@@ -1,6 +1,6 @@
 # Understanding / `lijie`
 
-`lijie` 是一个面向 Codex 的证据驱动学习 skill。它不把学习等同于“得到一段更短的解释”，而是帮助学习者把陌生材料变成可以解释、推导、应用、迁移和复查的能力。
+`lijie` 是一个辅助学习的skill。可以帮助学习者从0-1解释、推导、应用、迁移和复查学习新知识  
 
 > `lijie` turns unfamiliar knowledge into explainable, usable, testable, and transferable structure.
 
@@ -109,14 +109,7 @@ inferred       基于证据的模型推断
 uncertain      当前证据不足
 uncovered      尚未检查
 ```
-
-它不会假装能直接读取人的隐含上下文，也不会因为一次“听起来顺畅”就宣称掌握。学习者的解释、预测、执行、反例、迁移和延迟复习结果，才是调整讲解方式的依据。
-
-它也不是以下工具：
-
-- 单纯翻译、改写、校对或回答一个事实问题时的强制长模板；
-- 人格诊断或固定的“学习类型”分类器；
-- 未经用户同意就写入长期记忆的个人偏好系统。
+学习者的解释、预测、执行、反例、迁移和延迟复习结果，才是调整讲解方式的依据。
 
 ## 仓库结构
 
@@ -149,15 +142,6 @@ uncovered      尚未检查
 
 `skill/lijie/` 是可安装包；`docs/` 保存设计、评估和演化记录。旧版保护快照不放入公开包，而是保留在维护者本地作为回滚材料。
 
-## 验证记录
-
-R2 的公开验证记录位于 [`docs/evaluation/`](docs/evaluation/)：
-
-- skill quick validation：通过；
-- 数学 A/B 测试：R2 为 `13/14`，旧版为 `8/14`；
-- micrograd 语义测试：`3/3` 通过。
-
-这些结果说明 R2 在本轮测试任务上表现更好，但不代表对所有学科、所有学习者或长期记忆都已经完成充分评估。后续修改应继续经过回归测试，而不是只依据一次对话的主观流畅度。
 
 仓库 CI 位于 [`.github/workflows/ci.yml`](.github/workflows/ci.yml)，会在 pull request 和 `main` 分支 push 时检查 skill frontmatter、YAML、README 本地链接、reference 路径和文档 UTF-8 编码。
 
