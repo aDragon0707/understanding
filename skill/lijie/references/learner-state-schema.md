@@ -2,6 +2,8 @@
 
 本 reference 规定如何记录一次学习中的可观察状态。除非用户明确同意，不要把它当作跨会话个人记忆保存。
 
+互动任务的回答映射和原文证据以 [对话协议](dialogue-protocol.md) 为准。存在问答台账时，能力证据通过 `answer_ids` 引用对应的作答记录；单条记录可以支持的能力范围要明确。AI 自己的讲解、建议或运行结果不计作学习者独立表现。
+
 ## 最小状态
 
 ```yaml
@@ -17,6 +19,7 @@ observed_state:
   "概念或能力": unknown | fragile | misconception | prompted | independent | transferable | retained
 evidence:
   - type: explanation | prediction | application | derivation | implementation | counterexample | delayed_retrieval
+    answer_ids: [] # 有问答台账时引用实际作答；无台账时保留为空
     observation: "学习者实际做了什么"
     interpretation: source-backed | observed | inferred | uncertain
 misconceptions: []

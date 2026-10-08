@@ -111,6 +111,14 @@ uncovered      尚未检查
 ```
 学习者的解释、预测、执行、反例、迁移和延迟复习结果，才是调整讲解方式的依据。
 
+## 多轮互动与回答追踪
+
+互动学习默认每轮一个核心问题，用 `❓ Q1` 标记提问，用 `➡️ 建议` 标记学习路线或下一步选择。问题编号跨轮次持续递增；需要前置知识的问题在相关能力检查后再推进。用户可以自然作答，也可以要求提示、先讲、跳过或换例子。
+
+回答先关联到具体问题，再结合原文证据评价；补答与更正会更新对应记录和相关后续判断。确认“懂了”、AI 的代码运行结果或看完答案后的复述，不自动等于学习者独立掌握。
+
+完整规则见 [对话协议](skill/lijie/references/dialogue-protocol.md)。协议定义会话内的工作记录方式；自动存储、跨会话恢复和检索服务尚未实现，保存个人学习数据仍需用户明确同意。缺少原文或指代有歧义时，应澄清或重测。
+
 ## 仓库结构
 
 ```text
@@ -135,6 +143,7 @@ uncovered      尚未检查
         `-- references/
             |-- code-learning.md
             |-- domain-adapter-template.md
+            |-- dialogue-protocol.md
             |-- learner-state-schema.md
             |-- math-learning.md
             `-- structure-framework.md

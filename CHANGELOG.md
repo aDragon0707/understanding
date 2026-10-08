@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Added an interactive dialogue protocol with numbered questions, suggestion markers, and prerequisite-aware rounds.
+- Defined answer routing, source excerpts, correction history, and retrieval boundaries for follow-up teaching.
+- Linked learner evidence to answer records and distinguished independent performance from hints, confirmations, and AI execution.
+- Defaulted to one core question per round and excluded asynchronous reply intervals from ability assessment.
+
 ## 0.2.0 - 2026-07-24
 
 - Reworked `lijie` as an evidence-driven learning protocol rather than a fixed explanation template.
